@@ -2,20 +2,32 @@ package menu;
 
 import menu.category.WeekCategory;
 import menu.category.WeekCategoryCreator;
+import menu.coach.CoachMenu;
 import menu.io.InputReader;
 import menu.io.coach.CoachDataReader;
 import menu.io.coach.CoachNameReader;
 import menu.io.coach.NonPreferredFoodReader;
 import menu.io.retry.CoachDataReaderErrorLoggingAspect;
+import menu.menu.MenuRecommender;
+import menu.menu.ResultFormatter;
 
 public class Application {
     public static void main(String[] args) {
         CoachDataReader coachDataReader = coachDataReader();
-        WeekCategory weekCategory = weekCategory(weekCategoryCreator());
+        MyMenuApp app = new MyMenuApp(weekCategory(), menuRecommender(), resultFormatter());
+        app.run(coachDataReader.read());
     }
 
-    private static WeekCategory weekCategory(WeekCategoryCreator creator) {
-        return new WeekCategory(creator.create());
+    private static ResultFormatter resultFormatter() {
+        return new ResultFormatter();
+    }
+
+    private static MenuRecommender menuRecommender() {
+        return new MenuRecommender(randomUtils());
+    }
+
+    private static WeekCategory weekCategory() {
+        return new WeekCategory(weekCategoryCreator().create());
     }
 
     private static WeekCategoryCreator weekCategoryCreator() {
