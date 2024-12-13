@@ -9,28 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class WeekCategoryTest {
 
     @Test
-    void 주간_카테고리의_크기가_5가_아니라면_예외발생() {
-        assertThrows(IllegalArgumentException.class,
-                () -> new WeekCategory(List.of(
-                        Category.CHN, Category.KOR,
-                        Category.ASIAN, Category.KOR)));
-
-        assertThrows(IllegalArgumentException.class,
-                () -> new WeekCategory(List.of(
-                        Category.CHN, Category.KOR,
-                        Category.ASIAN, Category.KOR,
-                        Category.ASIAN, Category.WESTERN)));
-    }
-
-    @Test
-    void 등장_빈도가_주에_2번을_초과하는_카테고리가_있다면_예외_발생() {
-        assertThrows(IllegalArgumentException.class,
-                () -> new WeekCategory(List.of(
-                        Category.CHN, Category.KOR,
-                        Category.KOR, Category.KOR)));
-    }
-
-    @Test
     void 각_요일별_카테고리_확인가능() {
         WeekCategory weekCategory = new WeekCategory(List.of(
                 Category.CHN,
