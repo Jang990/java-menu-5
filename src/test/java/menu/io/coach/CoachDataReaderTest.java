@@ -19,10 +19,10 @@ class CoachDataReaderTest {
 
         List<CoachData> result = coachNameReader.read();
         assertEquals("11", result.get(0).getName());
-        assertEquals(List.of("11", "22"), result.get(0).getNonPreferredFoods().getFoods());
+        assertEquals(List.of("11", "22"), result.get(0).getNonPreferredFoods());
 
         assertEquals("22", result.get(1).getName());
-        assertEquals(List.of("11", "22"), result.get(1).getNonPreferredFoods().getFoods());
+        assertEquals(List.of("11", "22"), result.get(1).getNonPreferredFoods());
     }
 
 }
