@@ -20,7 +20,8 @@ public class CoachMenu {
     }
 
     public boolean isInedible(String menuName) {
-        return nonPreferredFoods.contains(menuName)
+        return menuName == null
+                || nonPreferredFoods.contains(menuName)
                 || menuHistory.contains(menuName);
     }
 
